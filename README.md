@@ -5,16 +5,16 @@ Vizualizarea Bookmarks:
 Dacă bara de bookmarks nu este vizibilă, apasă Ctrl+Shift+B pe Windows/Linux sau Cmd+Shift+B pe macOS pentru a o afișa.
 Crearea unui Nou Bookmark:
 
-Dă clic dreapta pe bara de marcaje și selectează Adaugă pagină....
+Dă clic dreapta pe Bookmarks și selectează Add Page ....
 
-În câmpul "Nume", scrie GTM & GCMV2 CHECK
+În câmpul "Name", scrie GTM & GCMV2 CHECK
 
 Adăugarea Codului JavaScript:
 În câmpul "URL", copiază și lipește codul JavaScript.
 
-Apasă butonul Salvare.
+Apasă butonul Save.
 
-Acum, marcajul "GTM & GCMV2 CHECK" ar trebui să apară în bookmarks.
+Acum, "GTM & GCMV2 CHECK" ar trebui să apară în bookmarks.
 
 Cum să Utilizezi GTM & GCMV2 CHECK?
 

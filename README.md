@@ -1,5 +1,6 @@
-**Cum să implementezi acest cod în Chrome:
-**Vizualizarea Bookmarks:
+Cum să implementezi acest cod în Chrome:
+
+Vizualizarea Bookmarks:
 
 Dacă bara de bookmarks nu este vizibilă, apasă Ctrl+Shift+B pe Windows/Linux sau Cmd+Shift+B pe macOS pentru a o afișa.
 Crearea unui Nou Bookmark:

@@ -1,0 +1,32 @@
+javascript:(() => {
+    const getStatus = (status) => status === undefined ? "Nesetat" : status ? "granted" : "denied";
+
+    if (!window["google_tag_data"]) {
+        alert("Google Consent Mode V2 nu este implementat.");
+        return;
+    }
+
+    const consentEntries = "ics" in google_tag_data ? google_tag_data.ics.entries : null;
+    if (!consentEntries) {
+        alert("Google Consent Mode V2 nu este implementat.");
+        return;
+    }
+
+    let message = "";
+    for (const key in consentEntries) {
+        const defaultStatus = getStatus(consentEntries[key]['default']);
+        const updateStatus = getStatus(consentEntries[key]['update']);
+
+        if (defaultStatus === "Nesetat" && updateStatus === "Nesetat") continue;
+
+        message += `${key.toUpperCase()}:\n`;
+        if (defaultStatus !== "Nesetat") message += ` Implicit: ${defaultStatus}\n`;
+        if (updateStatus !== "Nesetat") message += ` Actualizare: ${updateStatus}\n`;
+    }
+
+    if (message === "") {
+        alert("Google Consent Mode V2 nu este implementat.");
+    } else {
+        alert(`Detalii despre modul de consimțământ:\n\n${message.trim()}`);
+    }
+})();

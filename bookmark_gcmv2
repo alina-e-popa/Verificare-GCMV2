@@ -1,30 +1,22 @@
 javascript:(() => {
+    const isGtmInstalled = !!window.google_tag_manager;
+
+    let gtmMessage = "Google Tag Manager: " + (isGtmInstalled ? "Detectat" : "Nedetectat") + "\n\n";
+
     const getStatus = (status) => status === undefined ? "Nesetat" : status ? "granted" : "denied";
 
-    const checkGtmAndConsentMode = () => {
-        const isGtmInstalled = !!window.google_tag_manager;
-        const consentEntries = "google_tag_data" in window ? window.google_tag_data.ics.entries : null;
+    const consentEntries = "google_tag_data" in window ? window.google_tag_data.ics.entries : null;
 
-        let message = "Google Tag Manager: " + (isGtmInstalled ? "Detectat" : "Nedetectat") + "\n";
-
-        if (!consentEntries) {
-            message += "google_consent_mode_v2: Nu a fost detectat niciun parametru.";
-        } else {
-            for (const key in consentEntries) {
-                const defaultStatus = getStatus(consentEntries[key]['default']);
-                const updateStatus = getStatus(consentEntries[key]['update']);
-
-                if (defaultStatus === "Nesetat" && updateStatus === "Nesetat") continue;
-
-                message += `${key.toLowerCase()}:\n`;
-                if (defaultStatus !== "Nesetat") message += ` Default: ${defaultStatus}\n`;
-                if (updateStatus !== "Nesetat") message += ` Update: ${updateStatus}\n`;
-            }
+    let consentMessage = "Google Consent Mode V2 a fost detectat cu urmatorii parametri:\n";
+    if (consentEntries) {
+        for (const key in consentEntries) {
+            consentMessage += `${key}: Default(${getStatus(consentEntries[key]['default'])}), Update(${getStatus(consentEntries[key]['update'])})\n`;
         }
+    } else {
+        consentMessage += "Nu a fost detectat niciun parametru pentru Google Consent Mode V2.";
+    }
 
-        return message;
-    };
+    const finalMessage = gtmMessage + consentMessage;
 
-    const resultMessage = checkGtmAndConsentMode();
-    alert(resultMessage);
+    alert(finalMessage);
 })();
